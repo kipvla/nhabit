@@ -5,15 +5,17 @@
 
   <h3 *ngIf="user.email">Welcome, {{ user.email }}</h3>
 
-  <div *ngIf="!isSignedIn">
-    <h2>Register</h2>
-    <input type="text" #emailRegister />
-    <input type="text" #passwordRegister />
-    <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
-      Register
-    </button>
-  </div>
-  <div *ngIf="registerError" class="error">{{ registerError }}</div>
+  <mat-card>
+    <div *ngIf="!isSignedIn">
+      <h2>Register</h2>
+      <input type="text" #emailRegister />
+      <input type="text" #passwordRegister />
+      <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
+        Register
+      </button>
+    </div>
+    <div *ngIf="registerError" class="error">{{ registerError }}</div>
+  </mat-card>
 
   <div *ngIf="!isSignedIn">
     <h2>Sign in</h2>
