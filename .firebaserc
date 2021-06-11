@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "nhabit-d4471": {
+      "hosting": {
+        "nhabit-frontend": [
+          "nhabit-d4471"
+        ]
+      }
+    }
+  }
+}
