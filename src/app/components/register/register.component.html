@@ -1,1 +1,11 @@
-<p>register works!</p>
+<div class="container">
+  <h2>Register</h2>
+  <label for="email">Email</label>
+  <input type="text" name="email" #emailRegister />
+  <label for="password">Password</label>
+  <input type="password" name="password" #passwordRegister />
+  <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
+    Register
+  </button>
+  <div *ngIf="registerError" class="error">{{ registerError }}</div>
+</div>
