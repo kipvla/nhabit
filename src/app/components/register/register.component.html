@@ -1,12 +1,17 @@
 <div class="container">
   <h2>Register</h2>
+  <div *ngIf="registerError" class="error">{{ registerError }}</div>
   <label for="email">Email</label>
-  <input type="text" name="email" #emailRegister />
+  <input type="text" name="email" placeholder="Email" #emailRegister />
   <label for="password">Password</label>
-  <input type="password" name="password" #passwordRegister />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    #passwordRegister
+  />
   <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
     Register
   </button>
   <button routerLink="/login">Login</button>
-  <div *ngIf="registerError" class="error">{{ registerError }}</div>
 </div>

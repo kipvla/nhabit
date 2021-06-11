@@ -21,8 +21,15 @@ button {
 }
 
 input {
-  border-radius: 8px;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px 2px 0 0;
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   margin: 0.2rem;
   padding: 0.2rem 0.4rem;
+  &:focus {
+    outline: none;
+  }
 }
