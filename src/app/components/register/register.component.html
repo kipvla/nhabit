@@ -7,5 +7,6 @@
   <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
     Register
   </button>
+  <button routerLink="/login">Login</button>
   <div *ngIf="registerError" class="error">{{ registerError }}</div>
 </div>
