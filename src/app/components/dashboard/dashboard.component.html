@@ -1,1 +1,8 @@
-<p>dashboard works!</p>
+<div class="container">
+  <p *ngIf="isSignedIn">
+    <app-home></app-home>
+  </p>
+  <p *ngIf="!isSignedIn">
+    <app-landing></app-landing>
+  </p>
+</div>
