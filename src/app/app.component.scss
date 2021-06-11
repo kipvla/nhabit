@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error {
+  background: rgb(218, 67, 67);
+  color: white;
+  border-radius: 3px;
+  padding: 0rem 0.5rem;
+}
