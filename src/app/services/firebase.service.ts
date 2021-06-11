@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ApiClientService } from '../api-client.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class FirebaseService {
 
   constructor(
     public firebaseAuth: AngularFireAuth,
-    private apiClientService: ApiClientService
+    private apiClientService: ApiClientService,
+    private router: Router
     ) { }
 
   async login(email: string, password: string) {
@@ -37,6 +39,7 @@ export class FirebaseService {
             }
             console.log(res.user);
             localStorage.setItem('user', JSON.stringify(res.user));
+            this.router.navigate(['/home']);
           }
         });
       }
@@ -62,10 +65,12 @@ export class FirebaseService {
       });
       console.log("userdata after createUser call ", this.userData);
       localStorage.setItem('user', JSON.stringify(res.user));
+      this.router.navigate(['/home']);
     })
   }
   logout() {
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
+    this.router.navigate(['/dashboard']);
   }
 }
