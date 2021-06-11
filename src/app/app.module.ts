@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
@@ -16,6 +17,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LandingComponent } from './components/landing/landing.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent,
+    DashboardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
