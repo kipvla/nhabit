@@ -1,1 +1,11 @@
-<p>login works!</p>
+<div class="container">
+  <!-- <div *ngIf="!isSignedIn"> -->
+  <h2>Login</h2>
+  <label for="email">Email</label>
+  <input type="text" name="email" #email />
+  <label for="password">Password</label>
+  <input type="password" name="password" #password />
+  <button (click)="onLogin(email.value, password.value)">Login</button>
+  <!-- </div> -->
+  <div *ngIf="loginError" class="error">{{ loginError }}</div>
+</div>
