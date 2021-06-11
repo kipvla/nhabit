@@ -1,3 +1,8 @@
-<p>Home component</p>
-<button (click)="logout()">Logout</button>
-<div *ngIf="!userName">No userName</div>
+<div class="container">
+  <p>
+    Welcome to the home page,
+    <span *ngIf="!userName">anonymous user!</span>
+    <span *ngIf="userName">{{ userName }}!</span>
+  </p>
+  <button (click)="logout()">Logout</button>
+</div>
