@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,16 @@ import {MatCardModule} from '@angular/material/card';
     AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
