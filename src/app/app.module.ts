@@ -19,6 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LandingComponent } from './components/landing/landing.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NavbarComponent,
     RegisterComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    ErrorComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
