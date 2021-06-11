@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiClientService } from './api-client.service';
 import { User } from './models/user';
 import { FirebaseService } from './services/firebase.service';
 
@@ -9,8 +8,6 @@ import { FirebaseService } from './services/firebase.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'nHabit';
-
   isSignedIn = false;
   user: User = {
     uid: '',
@@ -24,7 +21,6 @@ export class AppComponent {
   loginError = '';
 
   constructor(
-    private apiClientService: ApiClientService,
     public firebaseService: FirebaseService
     ) { }
 
@@ -33,17 +29,17 @@ export class AppComponent {
     else this.isSignedIn = false;
   }
 
-  async onRegister(email: string, password: string) {
-    await this.firebaseService.register(email, password).catch(err => this.registerError = err.message)
-    if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
-    if (this.firebaseService.userData) this.user = this.firebaseService.userData;
-  }
+  // async onRegister(email: string, password: string) {
+  //   await this.firebaseService.register(email, password).catch(err => this.registerError = err.message)
+  //   if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
+  //   if (this.firebaseService.userData) this.user = this.firebaseService.userData;
+  // }
 
-  async onLogin(email: string, password: string) {
-    await this.firebaseService.login(email, password).catch(err => this.loginError = err.message)
-    if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
-    if (this.firebaseService.userData) this.user = this.firebaseService.userData;
-  }
+  // async onLogin(email: string, password: string) {
+  //   await this.firebaseService.login(email, password).catch(err => this.loginError = err.message)
+  //   if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
+  //   if (this.firebaseService.userData) this.user = this.firebaseService.userData;
+  // }
 
   handleLogout() {
     this.isSignedIn = false;

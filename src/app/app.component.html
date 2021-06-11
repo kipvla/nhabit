@@ -1,27 +1,11 @@
-<router-outlet></router-outlet>
-
 <div class="container">
-  <h1>{{ title }}</h1>
+  <a routerLink="/">
+    <img src="assets/icons/nhabit-icon2.png" />
+  </a>
+
+  <router-outlet></router-outlet>
 
   <h3 *ngIf="user.email">Welcome, {{ user.email }}</h3>
 
-  <div *ngIf="!isSignedIn">
-    <h2>Register</h2>
-    <input type="text" #emailRegister />
-    <input type="text" #passwordRegister />
-    <button (click)="onRegister(emailRegister.value, passwordRegister.value)">
-      Register
-    </button>
-  </div>
-  <div *ngIf="registerError" class="error">{{ registerError }}</div>
-
-  <div *ngIf="!isSignedIn">
-    <h2>Sign in</h2>
-    <input type="text" #email />
-    <input type="text" #password />
-    <button (click)="onLogin(email.value, password.value)">Sign in</button>
-  </div>
-  <div *ngIf="loginError" class="error">{{ loginError }}</div>
-
-  <app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home>
+  <!-- <app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home> -->
 </div>
