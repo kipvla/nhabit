@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: "Baloo Tammudu 2", cursive;
+  // background-color: rgb(69, 138, 149);
+  background: linear-gradient(
+      217deg,
+      rgb(169, 220, 231),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(127deg, rgb(69, 138, 149), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
