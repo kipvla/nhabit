@@ -1,8 +1,14 @@
-img {
-  height: 7rem;
-  width: 7rem;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 4rem;
+  width: 4rem;
   filter: drop-shadow(0px 0px 3px #aaa);
-  padding-top: 2rem;
+  // padding-top: 2rem;
+  padding: 0.5rem;
   animation: fade-in 2s linear;
 }
 

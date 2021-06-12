@@ -54,12 +54,49 @@ body {
   background-size: cover;
   background-position: center center;
   height: 100vh;
+  margin: 0;
 }
 
 html,
 body {
   height: 100%;
 }
-body {
-  margin: 0;
+
+.styled-input {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px 2px 0 0;
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  &:focus {
+    outline: none;
+  }
+  ::placeholder {
+    text-transform: lowercase;
+  }
+}
+
+.styled-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  margin: 1rem;
+  transition: all 300ms;
+  border-radius: 8px;
+  padding: 0rem 0.4rem;
+  font-family: "Baloo Tammudu 2", cursive;
+  cursor: pointer;
+  &:hover {
+    background: white;
+    transition: all 300ms;
+  }
+}
+
+.container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
