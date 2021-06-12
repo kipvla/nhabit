@@ -30,7 +30,7 @@ import { ErrorComponent } from './components/error/error.component';
     RegisterComponent,
     LandingComponent,
     DashboardComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
