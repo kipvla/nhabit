@@ -1,10 +1,9 @@
 <div class="container">
-  <h2>Login</h2>
   <div *ngIf="loginError" class="error">{{ loginError }}</div>
-  <label for="email">Email</label>
   <input type="text" name="email" placeholder="Email" #email />
-  <label for="password">Password</label>
   <input type="password" name="password" placeholder="Password" #password />
   <button (click)="onLogin(email.value, password.value)">Login</button>
+  <hr />
+  <div>Not yet registered?</div>
   <button routerLink="/register">Register</button>
 </div>
