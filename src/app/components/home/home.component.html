@@ -1,8 +1,21 @@
-<div class="container">
-  <p>
-    Welcome to the home page,
-    <span *ngIf="!userName">anonymous user!</span>
-    <span *ngIf="userName">{{ userName }}!</span>
-  </p>
-  <button (click)="logout()">Logout</button>
+<div class="container-centered">
+  <div class="container-centered" *ngIf="!userData.displayName">
+    <div>Welcome to nHabit!</div>
+    <div>
+      {{ userData.displayName }}
+      Congratulations on taking a step forward in your internet health.
+    </div>
+    <p>Please create a username:</p>
+    <input type="text" placeholder="username" class="styled-input" #username />
+    <button (click)="addUsername(username.value)" class="styled-button">
+      Add username
+    </button>
+    <div>{{ userName }}</div>
+  </div>
+  <div>
+    <span *ngIf="userData.displayName"
+      >Welcome back, {{ userData.displayName }}!</span
+    >
+  </div>
+  <button (click)="logout()" class="styled-button">Logout</button>
 </div>
