@@ -1,8 +1,8 @@
-<div class="container">
-  <p *ngIf="isSignedIn">
+<div class="container-centered">
+  <div *ngIf="isSignedIn; else landing">
     <app-home></app-home>
-  </p>
-  <p *ngIf="!isSignedIn">
+  </div>
+  <ng-template #landing>
     <app-landing></app-landing>
-  </p>
+  </ng-template>
 </div>
