@@ -11,6 +11,8 @@ export class ApiClientService {
   constructor(private http: HttpClient) { }
 
   private backendUrl = 'https://nhabit-backend.herokuapp.com/';
+  // private backendUrl = 'http://localhost:3000/';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -28,6 +30,6 @@ export class ApiClientService {
   }
 
   findUserByUidAndAddDisplayName(uid: string, displayName: string): Observable<User> {
-    return this.http.put<User>(`${this.backendUrl}register`, {displayName}, this.httpOptions)
+    return this.http.put<User>(`${this.backendUrl}update/${uid}`, {displayName}, this.httpOptions)
   }
 }
