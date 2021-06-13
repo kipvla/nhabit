@@ -1,21 +1,23 @@
-<div class="container-centered">
-  <div class="container-centered" *ngIf="!userData.displayName">
+<div class="container">
+  <div class="container" *ngIf="!userData.displayName">
     <div>Welcome to nHabit!</div>
     <div>
       {{ userData.displayName }}
       Congratulations on taking a step forward in your internet health.
     </div>
     <p>Please create a username:</p>
-    <input type="text" placeholder="username" class="styled-input" #username />
-    <button (click)="addUsername(username.value)" class="styled-button">
+    <input type="text" placeholder="username" class="input" #username />
+    <button (click)="addUsername(username.value)" class="button">
       Add username
     </button>
     <div>{{ userName }}</div>
   </div>
-  <div>
-    <span *ngIf="userData.displayName"
-      >Welcome back, {{ userData.displayName }}!</span
-    >
+  <div *ngIf="userData && userData.displayName" class="container">
+    <span>Welcome back, {{ userData.displayName }}!</span>
+    <div class="container row">
+      <app-game-preview title="Click"></app-game-preview>
+      <app-game-preview title="Type"></app-game-preview>
+      <app-game-preview title="Swipe"></app-game-preview>
+    </div>
   </div>
-  <button (click)="logout()" class="styled-button">Logout</button>
 </div>
