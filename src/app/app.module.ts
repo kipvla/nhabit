@@ -23,6 +23,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { GamePreviewComponent } from './components/game-preview/game-preview.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GameComponent } from './components/game/game.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { GameComponent } from './components/game/game.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
