@@ -20,6 +20,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { LandingComponent } from './components/landing/landing.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrorComponent } from './components/error/error.component';
+import { GamePreviewComponent } from './components/game-preview/game-preview.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { ErrorComponent } from './components/error/error.component';
     LandingComponent,
     DashboardComponent,
     ErrorComponent,
+    GamePreviewComponent,
+    ProfileComponent,
+    GameComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
