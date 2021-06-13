@@ -73,13 +73,14 @@ export class FirebaseService {
     .then(res => {
       this.isLoggedIn = true;
       console.log('res.user ', res.user);
-      this.userData = {
-        uid: res.user?.uid,
-        email: res.user?.email,
-        displayName: res.user?.displayName,
-        photoURL: res.user?.photoURL,
-        emailVerified: res.user?.emailVerified,
+      this.user = {
+        uid: res.user?.uid || '',
+        email: res.user?.email || '',
+        displayName: res.user?.displayName || '',
+        photoURL: res.user?.photoURL || '',
+        emailVerified: res.user?.emailVerified || false,
       }
+      this.user$.next(this.user);
       this.apiClientService.createUser(this.userData).subscribe(res => {
         console.log(res);
         this.userData = res;
@@ -94,7 +95,14 @@ export class FirebaseService {
     console.log('update profile called with ', body);
     await this.firebaseAuth.currentUser.then(res => {
       console.log(res);
-      res?.updateProfile(body);
+      res?.updateProfile(body).then(() => {
+        console.log('updated profile')
+        this.user = {
+          ...this.user, ...body}
+        this.user$.next(this.user);
+      }, (error) => {
+        console.log(error);
+      });
     });
   }
 
