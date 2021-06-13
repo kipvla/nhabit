@@ -7,9 +7,18 @@
   height: 4rem;
   width: 4rem;
   filter: drop-shadow(0px 0px 3px #aaa);
-  // padding-top: 2rem;
   padding: 0.5rem;
   animation: fade-in 2s linear;
+}
+
+a {
+  margin-right: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(119, 122, 122);
+  &:hover {
+    color: azure;
+  }
 }
 
 @keyframes fade-in {
