@@ -1,9 +1,7 @@
-<div class="container">
+<div>
   <app-navbar></app-navbar>
 
   <router-outlet></router-outlet>
 
   <h3 *ngIf="user.email">Welcome, {{ user.email }}</h3>
-
-  <!-- <app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home> -->
 </div>
