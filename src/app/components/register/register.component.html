@@ -1,26 +1,26 @@
-<div class="container-centered">
+<div class="container">
   <div *ngIf="registerError" class="error">{{ registerError }}</div>
   <input
     type="text"
     name="email"
-    placeholder="Email"
-    class="styled-input"
+    placeholder="email"
+    class="input"
     #emailRegister
   />
   <input
     type="password"
     name="password"
-    placeholder="Password"
-    class="styled-input"
+    placeholder="password"
+    class="input"
     #passwordRegister
   />
   <button
     (click)="onRegister(emailRegister.value, passwordRegister.value)"
-    class="styled-button"
+    class="button"
   >
     Register
   </button>
   <hr />
   <div>Already have an account?</div>
-  <button routerLink="/login" class="styled-button">Login</button>
+  <button routerLink="/login" class="button">Log in</button>
 </div>
