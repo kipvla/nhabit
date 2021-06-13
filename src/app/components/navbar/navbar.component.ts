@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.firebaseService.logout()
+    this.firebaseService.logout();
+    this.isLoggedIn = false;
     this.router.navigate(['/dashboard'])
   }
 
