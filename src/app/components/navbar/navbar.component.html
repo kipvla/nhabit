@@ -2,4 +2,9 @@
   <a routerLink="/">
     <img class="logo" src="assets/icons/nhabit-icon2.png" />
   </a>
+  <div class="container row">
+    <a *ngIf="isLoggedIn" routerLink="/home">Home</a>
+    <a *ngIf="isLoggedIn" routerLink="/profile">Profile</a>
+    <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+  </div>
 </div>
