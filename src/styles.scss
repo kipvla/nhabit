@@ -62,7 +62,7 @@ body {
   height: 100%;
 }
 
-.styled-input {
+.input {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 2px 2px 0 0;
   border-bottom: 1px solid black;
@@ -79,7 +79,7 @@ body {
   }
 }
 
-.styled-button {
+.button {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   margin: 1rem;
@@ -94,9 +94,18 @@ body {
   }
 }
 
-.container-centered {
+.button-lg {
+  width: 30vw;
+  height: 7rem;
+}
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
 }
