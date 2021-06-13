@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ApiClientService } from 'src/app/api-client.service';
+import { ApiClientService } from 'src/app/services/api-client.service';
 import { FirebaseService } from '../../services/firebase.service';
 import {Router} from '@angular/router';
 
