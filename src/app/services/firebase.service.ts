@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ApiClientService } from '../api-client.service';
+import { ApiClientService } from './api-client.service';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import { User } from '../models/user';
@@ -107,8 +107,14 @@ export class FirebaseService {
   }
 
   logout() {
-    this.firebaseAuth.signOut();
-    localStorage.removeItem('user');
-    this.router.navigate(['/dashboard']);
+    this.firebaseAuth.signOut()
+    .then(() => {
+      console.log('Logged out!')
+      this.isLoggedIn = false;
+      localStorage.removeItem('user');
+      this.router.navigate(['/dashboard']);
+      return true;
+    })
+    .catch(err => console.log(`Error logging out: ${err}`));
   }
 }
