@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(
+    private firebaseService: FirebaseService, 
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    this.firebaseService.firebaseAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        this.isLoggedIn = true;
+        console.log('user is logged in');
+      } else {
+        console.log('user not logged in');
+      }
+    })
+  }
+
+  logout() {
+    this.firebaseService.logout()
+    this.router.navigate(['/dashboard'])
   }
 
 }
