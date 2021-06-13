@@ -1,0 +1,10 @@
+.game-preview {
+  width: 30vw;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .game-preview {
+    width: 90vw;
+  }
+}
