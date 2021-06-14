@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { FirebaseService } from '../../services/firebase.service';
 import {Router} from '@angular/router';
@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
 
   userData: any;
 
-  @Output() isLogout = new EventEmitter<void>()
-
   constructor(
     public firebaseService: FirebaseService,
     private apiClientService: ApiClientService,
@@ -26,10 +24,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.firebaseService.user$.subscribe(user => {
       this.userData = user;
+      console.log(this.userData);
     });
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.uid = res.uid;
+        this.userData = res;
+        console.log(res);
         console.log('user is logged in');
       } else {
         console.log('user not logged in');
