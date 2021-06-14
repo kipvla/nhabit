@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.firebaseService.user$.subscribe(user => {
-      console.log(user);
       this.userData = user;
     });
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
