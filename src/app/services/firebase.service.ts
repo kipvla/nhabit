@@ -31,37 +31,41 @@ export class FirebaseService {
     ) { }
 
   async login(email: string, password: string) {
-    await this.firebaseAuth.signInWithEmailAndPassword(email, password)
-    .then((res) => {
-      let searchForUserInDB;
-      console.log('hello from register route')
-      if (res.user && res.user.uid) {
-        this.apiClientService.findUserByUid(res.user.uid).subscribe(val => {
-          searchForUserInDB = val ? val : null;
-          // If there is a match and email matches
-          if (searchForUserInDB && searchForUserInDB.email === email) {
-            console.log('match found in db')
-            this.user = {
-              uid: res.user?.uid || '',
-              email: res.user?.email || '',
-              displayName: res.user?.displayName || '',
-              photoURL: res.user?.photoURL || '',
-              emailVerified: res.user?.emailVerified || false,
-            };
-            this.user$.next(this.user);
-            this.isLoggedIn = true;
-            this.userData = {
-              uid: res.user?.uid,
-              email: res.user?.email,
-              displayName: res.user?.displayName,
-              photoURL: res.user?.photoURL,
-              emailVerified: res.user?.emailVerified,
+    this.firebaseAuth.setPersistence('local').then( async () => {
+      console.log('signing in with persistence apparently')
+      await this.firebaseAuth.signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        let searchForUserInDB;
+        console.log('hello from register route')
+        if (res.user && res.user.uid) {
+          this.apiClientService.findUserByUid(res.user.uid).subscribe(val => {
+            searchForUserInDB = val ? val : null;
+            // If there is a match and email matches
+            if (searchForUserInDB && searchForUserInDB.email === email) {
+              console.log('match found in db')
+              this.user = {
+                uid: res.user?.uid || '',
+                email: res.user?.email || '',
+                displayName: res.user?.displayName || '',
+                photoURL: res.user?.photoURL || '',
+                emailVerified: res.user?.emailVerified || false,
+              };
+              this.user$.next(this.user);
+              this.isLoggedIn = true;
+              this.userData = {
+                uid: res.user?.uid,
+                email: res.user?.email,
+                displayName: res.user?.displayName,
+                photoURL: res.user?.photoURL,
+                emailVerified: res.user?.emailVerified,
+              }
+              this.router.navigate(['/home']);
             }
-            this.router.navigate(['/home']);
-          }
-        });
-      }
+          });
+        }
+      })
     })
+    .catch((err) => console.log(err));
   }
 
   async register(email: string, password: string) {
