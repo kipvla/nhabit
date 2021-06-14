@@ -24,6 +24,7 @@ import { GamePreviewComponent } from './components/game-preview/game-preview.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { GameComponent } from './components/game/game.component';
 import { AuthGuard } from './auth.guard';
+import { UnAuthGuard } from './un-auth.guard';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { AuthGuard } from './auth.guard';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [FirebaseService, AuthGuard],
+  providers: [FirebaseService, AuthGuard, UnAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
