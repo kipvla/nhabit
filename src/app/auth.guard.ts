@@ -6,6 +6,7 @@ import { FirebaseService } from './services/firebase.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  isLoggedIn = false;
 
   constructor(
     private firebaseService: FirebaseService,
@@ -13,12 +14,18 @@ export class AuthGuard implements CanActivate {
     ) { }
 
   canActivate(): boolean {
-    if (this.firebaseService.isLoggedIn) {
-      return true;
-    } else {
-      this.router.navigate(['/login'])
-      return false;
-    }
+    console.log(this.firebaseService.isLoggedIn);
+    if (this.firebaseService.firebaseAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        console.log('user is logged in');
+        return true;
+      } else {
+        console.log('user not logged in');
+        this.router.navigate(['/login'])
+        return false;
+      }
+    })) return true;
+    else return false;
   }
   
 }
