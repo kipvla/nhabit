@@ -38,9 +38,7 @@ export class FirebaseService {
         this.apiClientService.findUserByUid(res.user.uid).subscribe(val => {
           searchForUserInDB = val ? val : null;
           // If there is a match and email matches
-          console.log(val);
           if (searchForUserInDB && searchForUserInDB.email === email) {
-            console.log('past the search bit')
             this.user = {
               uid: res.user?.uid || '',
               email: res.user?.email || '',
@@ -57,14 +55,11 @@ export class FirebaseService {
               photoURL: res.user?.photoURL,
               emailVerified: res.user?.emailVerified,
             }
-            console.log(res.user);
-            console.log(this.userData)
             localStorage.setItem('user', JSON.stringify(res.user));
             this.router.navigate(['/home']);
           }
         });
       }
-      console.log(searchForUserInDB);
     })
   }
 
@@ -72,7 +67,6 @@ export class FirebaseService {
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
     .then(res => {
       this.isLoggedIn = true;
-      console.log('res.user ', res.user);
       this.user = {
         uid: res.user?.uid || '',
         email: res.user?.email || '',
@@ -82,21 +76,17 @@ export class FirebaseService {
       }
       this.user$.next(this.user);
       this.apiClientService.createUser(this.userData).subscribe(res => {
-        console.log(res);
         this.userData = res;
       });
-      console.log("userdata after createUser call ", this.userData);
       localStorage.setItem('user', JSON.stringify(res.user));
       this.router.navigate(['/home']);
     })
   }
 
   async updateProfile(body: {}) {
-    console.log('update profile called with ', body);
     await this.firebaseAuth.currentUser.then(res => {
       console.log(res);
       res?.updateProfile(body).then(() => {
-        console.log('updated profile')
         this.user = {
           ...this.user, ...body}
         this.user$.next(this.user);
@@ -109,7 +99,6 @@ export class FirebaseService {
   logout() {
     this.firebaseAuth.signOut()
     .then(() => {
-      console.log('Logged out!')
       this.isLoggedIn = false;
       localStorage.removeItem('user');
       this.router.navigate(['/dashboard']);
