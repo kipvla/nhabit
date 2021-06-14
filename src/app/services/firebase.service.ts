@@ -34,11 +34,13 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
     .then((res) => {
       let searchForUserInDB;
+      console.log('hello from register route')
       if (res.user && res.user.uid) {
         this.apiClientService.findUserByUid(res.user.uid).subscribe(val => {
           searchForUserInDB = val ? val : null;
           // If there is a match and email matches
           if (searchForUserInDB && searchForUserInDB.email === email) {
+            console.log('match found in db')
             this.user = {
               uid: res.user?.uid || '',
               email: res.user?.email || '',
@@ -55,7 +57,6 @@ export class FirebaseService {
               photoURL: res.user?.photoURL,
               emailVerified: res.user?.emailVerified,
             }
-            localStorage.setItem('user', JSON.stringify(res.user));
             this.router.navigate(['/home']);
           }
         });
@@ -75,12 +76,13 @@ export class FirebaseService {
         emailVerified: res.user?.emailVerified || false,
       }
       this.user$.next(this.user);
-      this.apiClientService.createUser(this.userData).subscribe(res => {
+      this.apiClientService.createUser(this.user).subscribe(res => {
+        console.log(res);
         this.userData = res;
       });
-      localStorage.setItem('user', JSON.stringify(res.user));
       this.router.navigate(['/home']);
     })
+    .catch(err => console.log(err));
   }
 
   async updateProfile(body: {}) {
