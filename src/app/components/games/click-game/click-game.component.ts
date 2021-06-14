@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-click-game',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClickGameComponent implements OnInit {
 
-  constructor() { }
+  device = window.innerWidth < 768 ? 'phone' : 'computer';
+
+  pageId = 0;
+
+  constructor(private activatedRoute: ActivatedRoute) { 
+    this.pageId = Number(this.activatedRoute.snapshot.paramMap.get('title'));
+  }
 
   ngOnInit(): void {
   }

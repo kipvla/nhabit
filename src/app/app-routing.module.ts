@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrorComponent } from './components/error/error.component';
-import { GameComponent } from './components/game/game.component';
 import { ClickGameComponent } from './components/games/click-game/click-game.component';
 import { SwipeGameComponent } from './components/games/swipe-game/swipe-game.component';
 import { TypeGameComponent } from './components/games/type-game/type-game.component';
@@ -16,14 +15,13 @@ import { UnAuthGuard } from './un-auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [UnAuthGuard]  },
-  { path: 'login', component: LoginComponent, canActivate: [UnAuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [UnAuthGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, data: {animation: 'isRight'} },
+  { path: 'register', component: RegisterComponent, canActivate: [UnAuthGuard], data: {animation: 'isTop'} },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {animation: 'isLeft'} },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'game/:title', component: GameComponent, canActivate: [AuthGuard] },
-  { path: 'game/type', component: TypeGameComponent, canActivate: [AuthGuard] },
-  { path: 'game/click', component: ClickGameComponent, canActivate: [AuthGuard] },
-  { path: 'game/swipe', component: SwipeGameComponent, canActivate: [AuthGuard] },
+  { path: 'game/type/:id', component: TypeGameComponent, canActivate: [AuthGuard] },
+  { path: 'game/click/:id', component: ClickGameComponent, canActivate: [AuthGuard], data: {animation: 'isTop'} },
+  { path: 'game/swipe/:id', component: SwipeGameComponent, canActivate: [AuthGuard] },
   { path: '**', component: ErrorComponent },
 ];
 

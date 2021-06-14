@@ -1,6 +1,9 @@
 <div class="container">
   <p>
-    In the next minute let's explore interacting with your mouse in a new way
+    For the next minute, let's explore interacting with your {{ device }} in a
+    new way
   </p>
-  <button class="button button-lg">Click to begin</button>
+  <button class="button button-lg" routerLink="/game/click/{{ pageId + 1 }}">
+    Click to begin
+  </button>
 </div>
