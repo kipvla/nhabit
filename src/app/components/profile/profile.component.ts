@@ -8,7 +8,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  userData!: User;
+  // userData!: User;
+  userData: any;
 
   constructor(
   private firebaseService: FirebaseService
@@ -19,6 +20,15 @@ export class ProfileComponent implements OnInit {
       console.log(user);
       this.userData = user;
     });
+    this.firebaseService.firebaseAuth.authState.subscribe(res => {
+      if (res && res.uid) {
+        this.userData = res;
+        console.log(res);
+        console.log('user is logged in');
+      } else {
+        console.log('user not logged in');
+      }
+    })
   }
 
 }
