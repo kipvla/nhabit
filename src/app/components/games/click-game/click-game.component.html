@@ -2,10 +2,11 @@
   <ng-container *ngFor="let slide of slides; let i = index">
     <app-click-game-page
       (click)="onNextClick()"
-      *ngIf="i === pageId"
-      id="{{ slide.no }}"
+      *ngIf="i === slideNo"
       text="{{ slide.text }}"
       delay="{{ slide.delay }}"
+      hidingBtn="{{ slide.hidingBtn }}"
+      btnText="{{ slide.btnText ? slide.btnText : null }}"
       last="{{ i === slides.length - 1 ? 'true' : null }}"
       @carouselAnimation
     ></app-click-game-page>
