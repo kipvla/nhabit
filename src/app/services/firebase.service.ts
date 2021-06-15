@@ -4,6 +4,7 @@ import { ApiClientService } from './api-client.service';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import { User } from '../models/user';
+import { ErrorMsg } from '../models/error';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,12 @@ export class FirebaseService {
     emailVerified: false,
   } || null
   user$ = new BehaviorSubject<User>(this.user);
+
+  error: ErrorMsg = {
+    code: '',
+    message: ''
+  } || null
+  error$ = new BehaviorSubject<ErrorMsg>(this.error);
 
   constructor(
     public firebaseAuth: AngularFireAuth,
@@ -65,28 +72,30 @@ export class FirebaseService {
         }
       })
     })
-    .catch((err) => console.log(err));
+    .catch((err) => this.error$.next(err));
   }
 
   async register(email: string, password: string) {
-    await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
-    .then(res => {
-      this.isLoggedIn = true;
-      this.user = {
-        uid: res.user?.uid || '',
-        email: res.user?.email || '',
-        displayName: res.user?.displayName || '',
-        photoURL: res.user?.photoURL || '',
-        emailVerified: res.user?.emailVerified || false,
-      }
-      this.user$.next(this.user);
-      this.apiClientService.createUser(this.user).subscribe(res => {
-        console.log(res);
-        this.userData = res;
-      });
-      this.router.navigate(['/home']);
-    })
-    .catch(err => console.log(err));
+    this.firebaseAuth.setPersistence('local').then( async () => {
+      await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        this.isLoggedIn = true;
+        this.user = {
+          uid: res.user?.uid || '',
+          email: res.user?.email || '',
+          displayName: res.user?.displayName || '',
+          photoURL: res.user?.photoURL || '',
+          emailVerified: res.user?.emailVerified || false,
+        }
+        this.user$.next(this.user);
+        this.apiClientService.createUser(this.user).subscribe(res => {
+          console.log(res);
+          this.userData = res;
+        });
+        this.router.navigate(['/home']);
+      })
+      .catch(err => console.log(err));
+    }).catch((err) => console.log(err));
   }
 
   async updateProfile(body: {}) {
