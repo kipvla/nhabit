@@ -1,4 +1,4 @@
-import { keyframes, animate, animateChild, group, query, style, transition, trigger } from "@angular/animations";
+import { keyframes, animate, animateChild, group, query, style, transition, trigger, animation } from "@angular/animations";
 
 export const fader = trigger('routeAnimations', [
   transition('* <=> *', [
@@ -77,3 +77,12 @@ function slideY(direction: string) {
     ])
   ];
 }
+
+export const fadeIn = animation([
+  style({ opacity: 0 }), // start state
+  animate('300ms', style({ opacity: 1 }))
+]);
+
+export const fadeOut = animation([
+  animate('300ms', style({ opacity: 0 }))
+]);
