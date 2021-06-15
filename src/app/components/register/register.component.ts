@@ -27,8 +27,7 @@ export class RegisterComponent implements OnInit {
 
   async onRegister(email: string, password: string) {
     await this.firebaseService.register(email, password).catch(err => this.registerError = err.message)
-    if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
-    if (this.firebaseService.userData) this.user = this.firebaseService.userData;
+    this.firebaseService.error$.subscribe(res => this.registerError = res.message);
   }
 
 }

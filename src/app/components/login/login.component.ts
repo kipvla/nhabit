@@ -27,13 +27,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onLogin(email: string, password: string) {
-    await this.firebaseService.login(email, password).then(() => {
+  onLogin(email: string, password: string) {
+    this.firebaseService.login(email, password).then(() => {
       console.log('logged in');
-      this.router.navigate(['/home'])
-    }).catch(err => this.loginError = err.message)
-    // if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
-    // if (this.firebaseService.userData) this.user = this.firebaseService.userData;
+    }).catch(err => {
+      this.loginError = err.message
+      console.log(this.loginError);
+    })
+    this.firebaseService.firebaseAuth.authState.subscribe(res => {
+      if (res && res.uid) this.router.navigate(['/home'])
+      this.firebaseService.error$.subscribe(res => this.loginError = res.message)
+    })
+    
   }
 
 }
