@@ -1,6 +1,28 @@
-.button {
+.button-hides {
   margin: none;
-  &:hover {
-    display: none;
+  animation: 5s ease-out appear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    cursor: auto;
+  }
+  95% {
+    opacity: 0;
+    cursor: auto;
+  }
+  100% {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+@keyframes cursor {
+  from {
+    cursor: auto;
+  }
+  to {
+    cursor: pointer;
   }
 }
