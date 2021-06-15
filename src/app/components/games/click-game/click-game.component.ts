@@ -19,8 +19,10 @@ export class ClickGameComponent implements OnInit {
 
   slideNo = 0;
 
+  isAddingObservation = false;
+
   public slides = [
-    { text: `For the next minute, let\'s explore interacting with your ${ this.device } in a new way`, delay: 3000, hidingBtn: null },
+    { text: `For the next couple minutes, let\'s explore interacting with your ${ this.device } in a new way`, delay: 3000, hidingBtn: null },
     { text: 'We will practice clicking the above button just a bit more mindfully', delay: 700, hidingBtn: null },
     { text: '(Practice click)', delay: 700, hidingBtn: null },
     { text: '(Practice click #2)', delay: 700, hidingBtn: null },
@@ -31,7 +33,7 @@ export class ClickGameComponent implements OnInit {
     { text: 'Websites are rarely as rude as I was just now...', delay: 500, hidingBtn: null },
     { text: '...hiding the button they want you to click', delay: 500, hidingBtn: null },
     { text: 'But that does\'nt mean we have to be automatic clicking robots', delay: 500, hidingBtn: null },
-    { text: 'So what if for just a short time, we see if we can\'t do it with a little more care', delay: 500, hidingBtn: null },
+    { text: 'So what if for just a short time, let\'s see if we can\'t do it with a little more care', delay: 500, hidingBtn: null },
     { text: 'Let\'s try it', delay: 500, hidingBtn: null },
     { text: 'First, where are you looking?', delay: 5000, hidingBtn: null },
     { text: 'Are you aware of the size of the room or space you\'re in?', delay: 5000, hidingBtn: null },
@@ -47,7 +49,7 @@ export class ClickGameComponent implements OnInit {
     { text: 'There is no \'right\' or \'wrong\' way to click', delay: 5000, hidingBtn: true },
     { text: 'But I do think we can always find better ways of doing so', delay: 5000, hidingBtn: true },
     { text: 'That\'s all. Thanks for playing, come back soon!', delay: 500, hidingBtn: null },
-    { text: 'That\'s all. Thanks for playing, come back soon!', delay: 500, hidingBtn: null },
+    { text: '', delay: 500, hidingBtn: null },
   ];
 
   constructor(){}
@@ -57,6 +59,10 @@ export class ClickGameComponent implements OnInit {
 
   onNextClick() {
     this.slideNo++;
+  }
+
+  toggleAddObservation() {
+    this.isAddingObservation = !this.isAddingObservation;
   }
 
 }
