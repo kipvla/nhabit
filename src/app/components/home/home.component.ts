@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
   uid = '';
 
   games = [
-    {title: 'click', isOnMobile: null},
-    {title: 'type', isOnMobile: true},
-    {title: 'swipe', isOnMobile: true},
+    {title: 'click', isOnMobile: null, isOnComputer: true},
+    {title: 'type', isOnMobile: true, isOnComputer: true},
+    {title: 'swipe', isOnMobile: true, isOnComputer: false},
   ]
 
   userData: any;
@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
         console.log('user not logged in');
       }
     })
+    this.games = this.mobile ? this.games.filter(game => game.isOnMobile) : this.games.filter(game => game.isOnComputer);
   }
 
   async addUsername(username: string) {
