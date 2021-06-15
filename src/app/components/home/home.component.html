@@ -11,7 +11,7 @@
   </div>
   <div *ngIf="userData && userData.displayName" class="container">
     <span>Welcome back, {{ userData.displayName }}!</span>
-    <div class="container row">
+    <div class="container" [class.row]="!mobile">
       <app-game-preview
         *ngFor="let game of games"
         title="{{ game.title }}"
