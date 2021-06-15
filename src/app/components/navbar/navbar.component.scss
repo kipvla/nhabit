@@ -6,9 +6,19 @@
 .logo {
   height: 5rem;
   width: 5rem;
-  // filter: drop-shadow(0px 0px 8px grey);
   padding: 0.5rem;
   animation: fade-in 2s linear;
+  transition: filter 500ms ease-out, transform 300ms ease-out;
+  &:hover {
+    filter: drop-shadow(2px 4px 9px #555);
+    transform: scale(1.05);
+    transition: all 600ms ease-out;
+  }
+}
+
+.logo-lg {
+  height: 14rem;
+  width: 14rem;
 }
 
 a {
@@ -19,6 +29,14 @@ a {
   &:hover {
     color: azure;
   }
+}
+
+.a-lg {
+  margin-right: 0;
+}
+
+.hamburger {
+  padding: 1rem;
 }
 
 @keyframes fade-in {

@@ -9,6 +9,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
+  isMobile = window.innerWidth < 768 ? true : null;
+  isModalShowing = false;
 
   constructor(
     private firebaseService: FirebaseService, 
@@ -29,7 +31,13 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.firebaseService.logout();
     this.isLoggedIn = false;
+    this.isModalShowing = false;
     this.router.navigate(['/dashboard'])
+  }
+
+  toggleModal() {
+    console.log('show modal please')
+    this.isModalShowing = !this.isModalShowing;
   }
 
 }
