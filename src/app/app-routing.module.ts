@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [UnAuthGuard], data: {animation: 'isTop'} },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {animation: 'isLeft'} },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'game/type/:id', component: TypeGameComponent, canActivate: [AuthGuard] },
-  { path: 'game/click/:id', component: ClickGameComponent, canActivate: [AuthGuard], data: {animation: 'isTop'} },
-  { path: 'game/swipe/:id', component: SwipeGameComponent, canActivate: [AuthGuard] },
+  { path: 'game/type', component: TypeGameComponent, canActivate: [AuthGuard] },
+  { path: 'game/click', component: ClickGameComponent, canActivate: [AuthGuard], data: {animation: 'isTop'} },
+  { path: 'game/swipe', component: SwipeGameComponent, canActivate: [AuthGuard] },
   { path: '**', component: ErrorComponent },
 ];
 
