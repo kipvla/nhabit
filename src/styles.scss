@@ -55,6 +55,7 @@ body {
   background-position: center center;
   height: 100vh;
   margin: 0;
+  font-size: 1.3rem;
 }
 
 html,
@@ -109,6 +110,17 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.container-hollow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30vw;
+  height: 7rem;
+  margin: none;
+  padding: none;
 }
 
 .row {
