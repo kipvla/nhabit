@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { slider } from './animations/animation';
 import { User } from './models/user';
-import {slider} from './animations/animation'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    slider
-  ]
+  animations: [slider]
 })
 export class AppComponent {
   isSignedIn = false;
