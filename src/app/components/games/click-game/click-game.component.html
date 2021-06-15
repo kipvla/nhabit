@@ -3,7 +3,20 @@
     For the next minute, let's explore interacting with your {{ device }} in a
     new way
   </p>
-  <button class="button button-lg" routerLink="/game/click/{{ pageId + 1 }}">
+  <div>{{ pageId }}</div>
+  <button class="button button-lg" (click)="onNextClick()">
     Click to begin
   </button>
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <app-click-game-page
+      (click)="onNextClick()"
+      *ngIf="i === pageId"
+      id="{{ slide.src }}"
+      @carouselAnimation
+    ></app-click-game-page>
+  </ng-container>
+  <app-click-game-page
+    id="{{ pageId }}"
+    @carouselAnimation
+  ></app-click-game-page>
 </div>
