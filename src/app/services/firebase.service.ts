@@ -94,8 +94,8 @@ export class FirebaseService {
         });
         this.router.navigate(['/home']);
       })
-      .catch(err => console.log(err));
-    }).catch((err) => console.log(err));
+      .catch(err => this.error$.next(err));
+    }).catch((err) => this.error$.next(err));
   }
 
   async updateProfile(body: {}) {
