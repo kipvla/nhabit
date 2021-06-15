@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { slider } from './animations/animation';
 import { User } from './models/user';
 
@@ -19,6 +20,9 @@ export class AppComponent {
     emailVerified: false,
   };
 
+  isMobile = window.innerWidth < 768 ? true : false;
+  isMobile$ = new BehaviorSubject<boolean>(this.isMobile);
+
   constructor() { }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -26,8 +30,6 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('user')) this.isSignedIn = true;
-    else this.isSignedIn = false;
   }
 
   handleLogout() {
@@ -39,6 +41,12 @@ export class AppComponent {
       photoURL: '',
       emailVerified: false,
     };
+  }
+
+  onResize(event: any) {
+    const size = event.target.innerWidth;
+    if (size <= 768) this.isMobile = true;
+    else this.isMobile = false;
   }
 
 }

@@ -1,4 +1,7 @@
-<div [@routeAnimations]="prepareRoute(outlet)">
+<div
+  [@routeAnimations]="prepareRoute(outlet)"
+  (window:resize)="onResize($event)"
+>
   <app-navbar></app-navbar>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
