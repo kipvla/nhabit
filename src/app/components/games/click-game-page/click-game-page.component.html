@@ -8,8 +8,15 @@
   </button>
   <ng-template #display>
     <div class="container-hollow">
-      <button class="button button-lg" [attr.disabled]="disabled ? '' : null">
-        Click
+      <button
+        class="button button-lg"
+        [class.button-hides]="hidingBtn"
+        [attr.disabled]="disabled ? '' : null"
+      >
+        <span *ngIf="btnText; else click">{{ btnText }}</span>
+        <ng-template #click>
+          <span>Click</span>
+        </ng-template>
       </button>
     </div>
     <p>{{ text }}</p>
