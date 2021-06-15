@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ApiClientService {
 
   constructor(private http: HttpClient) { }
 
-  private backendUrl = 'https://nhabit-backend.herokuapp.com/';
+  private backendUrl = environment.backendURL;
   // private backendUrl = 'http://localhost:3000/';
 
   httpOptions = {
