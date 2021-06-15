@@ -28,6 +28,7 @@ import { UnAuthGuard } from './un-auth.guard';
 import { TypeGameComponent } from './components/games/type-game/type-game.component';
 import { ClickGameComponent } from './components/games/click-game/click-game.component';    
 import { SwipeGameComponent } from './components/games/swipe-game/swipe-game.component';
+import { ClickGamePageComponent } from './components/games/click-game-page/click-game-page.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SwipeGameComponent } from './components/games/swipe-game/swipe-game.com
     TypeGameComponent,
     ClickGameComponent,
     SwipeGameComponent,
+    ClickGamePageComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
