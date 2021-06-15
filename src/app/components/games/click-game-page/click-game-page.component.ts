@@ -12,6 +12,8 @@ export class ClickGamePageComponent implements OnInit {
   @Input() id!:string;
   @Input() device!:string;
   @Input() last!:string;
+  @Input() hidingBtn!:string;
+  @Input() btnText!:string;
 
   time = Number(this.delay);
 
@@ -22,7 +24,6 @@ export class ClickGamePageComponent implements OnInit {
   ngOnInit(): void {
     const delay = Number(this.delay);
     setTimeout(() => {
-      console.log('delayClick called')
       this.disabled = false;
     }, delay)
   }
