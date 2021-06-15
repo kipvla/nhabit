@@ -12,9 +12,10 @@
   <div *ngIf="userData && userData.displayName" class="container">
     <span>Welcome back, {{ userData.displayName }}!</span>
     <div class="container row">
-      <app-game-preview title="click"></app-game-preview>
-      <app-game-preview title="type"></app-game-preview>
-      <app-game-preview title="swipe"></app-game-preview>
+      <app-game-preview
+        *ngFor="let game of games"
+        title="{{ game.title }}"
+      ></app-game-preview>
     </div>
   </div>
 </div>
