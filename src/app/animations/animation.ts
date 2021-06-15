@@ -79,10 +79,10 @@ function slideY(direction: string) {
 }
 
 export const fadeIn = animation([
-  style({ opacity: 0 }), // start state
-  animate('300ms', style({ opacity: 1 }))
+  style({ opacity: 0, transform: 'translateY(100%)' }),
+  animate('{{time}} ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
 ]);
 
 export const fadeOut = animation([
-  animate('300ms', style({ opacity: 0 }))
+  animate('{{time}} ease-out', style({ opacity: 0, transform: 'translateY(-40%)' }))
 ]);
