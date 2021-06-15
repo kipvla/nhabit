@@ -1,0 +1,39 @@
+.new-observation {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  margin: 1rem;
+  font-size: 3rem;
+  width: auto;
+  height: auto;
+  background: transparent;
+  line-height: 2rem;
+  transition: all 500ms;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 500ms;
+  }
+}
+
+.close {
+  align-self: flex-end;
+  justify-self: end;
+  position: fixed;
+  top: 0;
+  margin: 1rem;
+  font-size: 3rem;
+  transition: all 500ms;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 500ms;
+  }
+}
+
+.add-observation {
+  color: white;
+  * {
+    color: white;
+  }
+}
