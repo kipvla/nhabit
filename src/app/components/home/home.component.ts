@@ -10,8 +10,16 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  mobile = window.innerWidth < 768 ? true : null;
+
   userName = '';
   uid = '';
+
+  games = [
+    {title: 'click', isOnMobile: null},
+    {title: 'type', isOnMobile: true},
+    {title: 'swipe', isOnMobile: true},
+  ]
 
   userData: any;
 
