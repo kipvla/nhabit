@@ -1,1 +1,17 @@
-<p>click-game-page works! {{ id }}</p>
+<div class="container">
+  <button
+    *ngIf="last; else display"
+    class="button button-lg"
+    routerLink="/home"
+  >
+    Back to games
+  </button>
+  <ng-template #display>
+    <div class="container-hollow">
+      <button class="button button-lg" [attr.disabled]="disabled ? '' : null">
+        Click
+      </button>
+    </div>
+    <p>{{ text }}</p>
+  </ng-template>
+</div>
