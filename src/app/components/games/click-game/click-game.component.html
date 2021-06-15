@@ -1,22 +1,13 @@
 <div class="container">
-  <p>
-    For the next minute, let's explore interacting with your {{ device }} in a
-    new way
-  </p>
-  <div>{{ pageId }}</div>
-  <button class="button button-lg" (click)="onNextClick()">
-    Click to begin
-  </button>
   <ng-container *ngFor="let slide of slides; let i = index">
     <app-click-game-page
       (click)="onNextClick()"
       *ngIf="i === pageId"
-      id="{{ slide.src }}"
+      id="{{ slide.no }}"
+      text="{{ slide.text }}"
+      delay="{{ slide.delay }}"
+      last="{{ i === slides.length - 1 ? 'true' : null }}"
       @carouselAnimation
     ></app-click-game-page>
   </ng-container>
-  <app-click-game-page
-    id="{{ pageId }}"
-    @carouselAnimation
-  ></app-click-game-page>
 </div>
