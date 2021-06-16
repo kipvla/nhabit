@@ -1,21 +1,28 @@
-<div class="container">
-  <div class="container" *ngIf="!userData.displayName">
-    <div>Welcome to nHabit!</div>
-    <div>Congratulations on taking a step forward in your internet health.</div>
-    <p>Please create a username:</p>
-    <input type="text" placeholder="username" class="input" #username />
-    <button (click)="addUsername(username.value)" class="button">
-      Add username
-    </button>
-    <div>{{ userName }}</div>
-  </div>
-  <div *ngIf="userData && userData.displayName" class="container">
-    <span>Welcome back, {{ userData.displayName }}!</span>
-    <div class="container" [class.row]="!mobile">
-      <app-game-preview
-        *ngFor="let game of games"
-        title="{{ game.title }}"
-      ></app-game-preview>
+<div *ngIf="isLoading; else content" class="container">
+  <img src="/assets/icons/android-chrome-192x192.png" class="spinner" alt="" />
+</div>
+<ng-template #content (window:resize)="onResize($event)">
+  <div class="container">
+    <div class="container" *ngIf="!userData.displayName">
+      <div>Welcome to nHabit!</div>
+      <div>
+        Congratulations on taking a step forward in your internet health.
+      </div>
+      <p>Please create a username:</p>
+      <input type="text" placeholder="username" class="input" #username />
+      <button (click)="addUsername(username.value)" class="button">
+        Add username
+      </button>
+      <div>{{ userName }}</div>
+    </div>
+    <div *ngIf="userData && userData.displayName" class="container">
+      <span>Welcome back, {{ userData.displayName }}!</span>
+      <div class="container" [class.row]="!isMobile">
+        <app-game-preview
+          *ngFor="let game of currentGames"
+          title="{{ game.title }}"
+        ></app-game-preview>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
