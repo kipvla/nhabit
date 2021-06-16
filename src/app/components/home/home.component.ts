@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   games = [
     {title: 'click', isOnMobile: true, isOnComputer: true},
-    {title: 'type', isOnMobile: true, isOnComputer: true},
+    {title: 'type', isOnMobile: false, isOnComputer: true},
     {title: 'swipe', isOnMobile: true, isOnComputer: false},
   ]
   currentGames = [{title: 'type', isOnMobile: true, isOnComputer: true}]
