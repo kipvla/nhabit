@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ApiClientService } from './api-client.service';
+import { ApiClientService } from '../api-client/api-client.service';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import { User } from '../models/user';
-import { ErrorMsg } from '../models/error';
+import { User } from '../../models/user';
+import { ErrorMsg } from '../../models/error';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +22,13 @@ export class FirebaseService {
     displayName: '',
     photoURL: '',
     emailVerified: false,
-  } || null
+  }
   user$ = new BehaviorSubject<User>(this.user);
 
   error: ErrorMsg = {
     code: '',
     message: ''
-  } || null
+  }
   error$ = new BehaviorSubject<ErrorMsg>(this.error);
 
   constructor(
@@ -95,7 +95,7 @@ export class FirebaseService {
         this.router.navigate(['/home']);
       })
       .catch(err => this.error$.next(err));
-    }).catch((err) => this.error$.next(err));
+    }).catch((err) => console.log(err));
   }
 
   async updateProfile(body: {}) {
