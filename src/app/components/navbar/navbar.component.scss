@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  height: 7.4rem;
 }
 
 .logo {
@@ -28,6 +29,19 @@ a {
   color: rgb(119, 122, 122);
   &:hover {
     color: azure;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal a {
+    color: white;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    &:hover {
+      color: lightcyan;
+      background: grey;
+    }
   }
 }
 

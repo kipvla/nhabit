@@ -1,27 +1,34 @@
-<div class="navbar" *ngIf="isLoggedIn; else bigIcon">
-  <a routerLink="/home">
-    <img class="logo" src="assets/icons/nhabit-icon5.png" />
-  </a>
-  <div *ngIf="isMobile; else computer" class="container row">
-    <div (click)="toggleModal()" class="hamburger">🍔</div>
-    <div *ngIf="isModalShowing" class="container modal" (click)="toggleModal()">
-      <a routerLink="/home">Home</a>
-      <a routerLink="/profile">Profile</a>
-      <a (click)="logout()">Logout</a>
+<div *ngIf="isLoading; else content" class="navbar"></div>
+<ng-template #content (window:resize)="onResize($event)">
+  <div class="navbar" *ngIf="isLoggedIn; else bigIcon">
+    <a routerLink="/home">
+      <img class="logo" src="assets/icons/nhabit-icon5.png" />
+    </a>
+    <div *ngIf="isMobile; else computer" class="container row">
+      <div (click)="toggleModal()" class="hamburger">🍔</div>
+      <div
+        *ngIf="isModalShowing"
+        class="container modal"
+        (click)="toggleModal()"
+      >
+        <a routerLink="/home">Home</a>
+        <a routerLink="/profile">Profile</a>
+        <a (click)="logout()">Logout</a>
+      </div>
     </div>
+    <ng-template #computer>
+      <div class="container row">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/profile">Profile</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </ng-template>
   </div>
-  <ng-template #computer>
-    <div class="container row">
-      <a routerLink="/home">Home</a>
-      <a routerLink="/profile">Profile</a>
-      <a (click)="logout()">Logout</a>
+  <ng-template #bigIcon>
+    <div class="container">
+      <a routerLink="/home" class="a-lg">
+        <img class="logo logo-lg" src="assets/icons/nhabit-icon5.png" />
+      </a>
     </div>
   </ng-template>
-</div>
-<ng-template #bigIcon>
-  <div class="container">
-    <a routerLink="/home" class="a-lg">
-      <img class="logo logo-lg" src="assets/icons/nhabit-icon5.png" />
-    </a>
-  </div>
 </ng-template>
