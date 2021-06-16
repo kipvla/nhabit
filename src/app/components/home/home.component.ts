@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiClientService } from 'src/app/services/api-client.service';
-import { FirebaseService } from '../../services/firebase.service';
+import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { FirebaseService } from '../../services/firebase/firebase.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,16 +10,19 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  mobile = window.innerWidth < 768 ? true : null;
+  isLoading = true;
+
+  isMobile = window.innerWidth < 768 ? true : null;
 
   userName = '';
   uid = '';
 
   games = [
-    {title: 'click', isOnMobile: null, isOnComputer: true},
+    {title: 'click', isOnMobile: false, isOnComputer: true},
     {title: 'type', isOnMobile: true, isOnComputer: true},
     {title: 'swipe', isOnMobile: true, isOnComputer: false},
   ]
+  currentGames = [{title: 'type', isOnMobile: true, isOnComputer: true}]
 
   userData: any;
 
@@ -43,8 +46,9 @@ export class HomeComponent implements OnInit {
       } else {
         console.log('user not logged in');
       }
+      this.isLoading = false;
     })
-    this.games = this.mobile ? this.games.filter(game => game.isOnMobile) : this.games.filter(game => game.isOnComputer);
+    this.currentGames = this.isMobile ? this.games.filter(game => game.isOnMobile) : this.games.filter(game => game.isOnComputer);
   }
 
   async addUsername(username: string) {
@@ -55,6 +59,15 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/home'])
     });
     else return null;
+  }
+
+  onResize(event: any) {
+    const size = event.target.innerWidth;
+    if (size <= 768) this.isMobile = true;
+    else this.isMobile = null;
+    console.log(this.isMobile);
+    this.currentGames = this.isMobile ? this.games.filter(game => game.isOnMobile) : this.games.filter(game => game.isOnComputer);
+    console.log(this.currentGames);
   }
 
 }
