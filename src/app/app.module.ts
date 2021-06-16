@@ -9,7 +9,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
-import { FirebaseService } from './services/firebase.service';
+import { FirebaseService } from './services/firebase/firebase.service';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
