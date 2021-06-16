@@ -1,5 +1,5 @@
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {fadeIn, fadeOut} from '../../../animations/animation';
 
 @Component({
@@ -13,7 +13,7 @@ import {fadeIn, fadeOut} from '../../../animations/animation';
     ])
   ]
 })
-export class ClickGameComponent implements OnInit {
+export class ClickGameComponent {
 
   device = window.innerWidth < 768 ? 'phone' : 'computer';
 
@@ -53,9 +53,6 @@ export class ClickGameComponent implements OnInit {
   ];
 
   constructor(){}
-
-  ngOnInit(): void {
-  }
 
   onNextClick() {
     this.slideNo++;

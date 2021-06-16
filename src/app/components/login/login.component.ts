@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   isSignedIn = false;
   user: User = {
@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
 
   constructor(public firebaseService: FirebaseService,
     private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   onLogin(email: string, password: string) {
     this.firebaseService.login(email, password).then(() => {

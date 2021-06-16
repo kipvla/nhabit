@@ -29,9 +29,6 @@ export class AppComponent {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
-  ngOnInit(): void {
-  }
-
   handleLogout() {
     this.isSignedIn = false;
     this.user = {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
@@ -7,7 +7,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   isSignedIn = false;
   user: User = {
@@ -21,9 +21,6 @@ export class RegisterComponent implements OnInit {
   registerError = '';
 
   constructor(public firebaseService: FirebaseService) { }
-
-  ngOnInit(): void {
-  }
 
   async onRegister(email: string, password: string) {
     await this.firebaseService.register(email, password).catch(err => this.registerError = err.message)

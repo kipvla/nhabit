@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   uid = '';
 
   games = [
-    {title: 'click', isOnMobile: false, isOnComputer: true},
+    {title: 'click', isOnMobile: true, isOnComputer: true},
     {title: 'type', isOnMobile: true, isOnComputer: true},
     {title: 'swipe', isOnMobile: true, isOnComputer: false},
   ]
