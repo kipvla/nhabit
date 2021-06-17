@@ -32,7 +32,7 @@ export class ClickGameComponent {
     { text: 'If you\'re anything like me, you\'ve likely already done plenty of mindless clicking today', delay: 500, hidingBtn: null },
     { text: 'Websites are rarely as rude as I was just now...', delay: 500, hidingBtn: null },
     { text: '...hiding the button they want you to click', delay: 500, hidingBtn: null },
-    { text: 'But that does\'nt mean we have to be automatic clicking robots', delay: 500, hidingBtn: null },
+    { text: 'But that doesn\'t mean we have to be automatic clicking robots', delay: 500, hidingBtn: null },
     { text: 'So what if for just a short time, let\'s see if we can\'t do it with a little more care', delay: 500, hidingBtn: null },
     { text: 'Let\'s try it', delay: 500, hidingBtn: null },
     { text: 'First, where are you looking?', delay: 5000, hidingBtn: null },
