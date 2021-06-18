@@ -65,14 +65,14 @@ function slideY(direction: string) {
       })
     ], optional),
     query(':enter', [
-      style({[direction]: '-100%'})
+      style({[direction]: '-80%'})
     ]),
     group([
       query(':leave', [
         animate('1s ease', style({[direction]: '100%'}))
       ], optional),
       query(':enter', [
-        animate('1s ease', style({ [direction]: '0%'}))
+        animate('3s ease-out', style({ [direction]: '25%'}))
       ])
     ])
   ];
