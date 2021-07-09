@@ -1,4 +1,4 @@
-import { keyframes, animate, animateChild, group, query, style, transition, trigger, animation } from "@angular/animations";
+import { animate, group, query, style, transition, trigger, animation } from "@angular/animations";
 
 export const fader = trigger('routeAnimations', [
   transition('* <=> *', [
@@ -45,7 +45,7 @@ function slideX(direction: string) {
     ]),
     group([
       query(':leave', [
-        animate('1s ease', style({[direction]: '100%'}))
+        animate('1s ease', style({[direction]: '0%'}))
       ], optional),
       query(':enter', [
         animate('1s ease', style({ [direction]: '0%'}))
@@ -69,10 +69,10 @@ function slideY(direction: string) {
     ]),
     group([
       query(':leave', [
-        animate('1s ease', style({[direction]: '100%'}))
+        animate('1s ease', style({[direction]: '0%'}))
       ], optional),
       query(':enter', [
-        animate('3s ease-out', style({ [direction]: '25%'}))
+        animate('1s ease-out', style({ [direction]: '0%'}))
       ])
     ])
   ];
@@ -80,9 +80,9 @@ function slideY(direction: string) {
 
 export const fadeIn = animation([
   style({ opacity: 0, transform: 'translateY(100%)' }),
-  animate('{{time}} 400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+  animate('{{time}} 400ms ease-out', style({ opacity: 1, transform: 'translateY(0%)' }))
 ]);
 
 export const fadeOut = animation([
-  animate('{{time}} linear', style({ opacity: 0, transform: 'translateY(-40%)', top: '50px' }))
+  animate('{{time}} linear', style({ opacity: 0, transform: 'translateY(0%)'}))
 ]);

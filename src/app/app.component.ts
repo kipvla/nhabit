@@ -1,14 +1,21 @@
+import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { slider } from './animations/animation';
+import { fadeIn, fadeOut, slider } from './animations/animation';
 import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slider]
+  animations: [
+    slider,
+    trigger("carouselAnimation", [
+      transition("void => *", [useAnimation(fadeIn, {params: {time: '800ms'}})]),
+      transition("* => void", [useAnimation(fadeOut, {params: {time: '400ms'}})]),
+    ])
+  ]
 })
 export class AppComponent {
   isSignedIn = false;

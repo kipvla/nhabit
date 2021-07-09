@@ -39,17 +39,14 @@ export class FirebaseService {
 
   async login(email: string, password: string) {
     this.firebaseAuth.setPersistence('local').then( async () => {
-      console.log('signing in with persistence apparently')
       await this.firebaseAuth.signInWithEmailAndPassword(email, password)
       .then((res) => {
         let searchForUserInDB;
-        console.log('hello from register route')
         if (res.user && res.user.uid) {
           this.apiClientService.findUserByUid(res.user.uid).subscribe(val => {
             searchForUserInDB = val ? val : null;
             // If there is a match and email matches
             if (searchForUserInDB && searchForUserInDB.email === email) {
-              console.log('match found in db')
               this.user = {
                 uid: res.user?.uid || '',
                 email: res.user?.email || '',
@@ -89,25 +86,21 @@ export class FirebaseService {
         }
         this.user$.next(this.user);
         this.apiClientService.createUser(this.user).subscribe(res => {
-          console.log(res);
           this.userData = res;
         });
         this.router.navigate(['/home']);
       })
       .catch(err => this.error$.next(err));
-    }).catch((err) => console.log(err));
+    }).catch((err) => {});
   }
 
   async updateProfile(body: {}) {
     await this.firebaseAuth.currentUser.then(res => {
-      console.log(res);
       res?.updateProfile(body).then(() => {
         this.user = {
           ...this.user, ...body}
         this.user$.next(this.user);
-      }, (error) => {
-        console.log(error);
-      });
+      }, (error) => {});
     });
   }
 

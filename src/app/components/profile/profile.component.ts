@@ -17,16 +17,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.firebaseService.user$.subscribe(user => {
-      console.log(user);
       this.userData = user;
     });
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.userData = res;
-        console.log(res);
-        console.log('user is logged in');
       } else {
-        console.log('user not logged in');
       }
     })
   }

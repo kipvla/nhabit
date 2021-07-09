@@ -14,13 +14,10 @@ export class AuthGuard implements CanActivate {
     ) { }
 
   canActivate(): boolean {
-    console.log(this.firebaseService.isLoggedIn);
     if (this.firebaseService.firebaseAuth.authState.subscribe(res => {
       if (res && res.uid) {
-        console.log('user is logged in');
         return true;
       } else {
-        console.log('user not logged in');
         this.router.navigate(['/landing'])
         return false;
       }

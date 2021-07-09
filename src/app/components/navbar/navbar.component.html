@@ -4,7 +4,7 @@
     <a routerLink="/home">
       <img class="logo" src="assets/icons/nhabit-icon5.png" />
     </a>
-    <div *ngIf="isMobile; else computer" class="container row">
+    <div *ngIf="isMobile; else fullsize" class="container row">
       <div (click)="toggleModal()" class="hamburger">🍔</div>
       <div
         *ngIf="isModalShowing"
@@ -16,7 +16,7 @@
         <a (click)="logout()">Logout</a>
       </div>
     </div>
-    <ng-template #computer>
+    <ng-template #fullsize>
       <div class="container row">
         <a routerLink="/home">Home</a>
         <a routerLink="/profile">Profile</a>

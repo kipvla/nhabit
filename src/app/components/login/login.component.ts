@@ -25,11 +25,8 @@ export class LoginComponent {
     private router: Router) { }
 
   onLogin(email: string, password: string) {
-    this.firebaseService.login(email, password).then(() => {
-      console.log('logged in');
-    }).catch(err => {
+    this.firebaseService.login(email, password).then(() => {}).catch(err => {
       this.loginError = err.message
-      console.log(this.loginError);
     })
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
       if (res && res.uid) this.router.navigate(['/home'])

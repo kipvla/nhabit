@@ -35,16 +35,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.firebaseService.user$.subscribe(user => {
       this.userData = user;
-      console.log(this.userData);
     });
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.uid = res.uid;
         this.userData = res;
-        console.log(res);
-        console.log('user is logged in');
       } else {
-        console.log('user not logged in');
       }
       this.isLoading = false;
     })
@@ -65,9 +61,7 @@ export class HomeComponent implements OnInit {
     const size = event.target.innerWidth;
     if (size <= 768) this.isMobile = true;
     else this.isMobile = null;
-    console.log(this.isMobile);
     this.currentGames = this.isMobile ? this.games.filter(game => game.isOnMobile) : this.games.filter(game => game.isOnComputer);
-    console.log(this.currentGames);
   }
 
 }

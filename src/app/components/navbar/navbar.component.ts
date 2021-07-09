@@ -20,31 +20,23 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
-      console.log(`Loading - ${this.isLoading}`)
       if (res && res.uid) {
         this.isLoggedIn = true;
-        console.log('user is logged in');
       } else {
-        console.log('user not logged in');
       }
       this.isLoading = false;
-      console.log(`Loading - ${this.isLoading}`)
     })
   }
 
   logout() {
     this.firebaseService.logout();
     this.firebaseService.firebaseAuth.authState.subscribe(res => {
-      console.log(`Loading - ${this.isLoading}`)
       if (res && res.uid) {
         this.isLoggedIn = true;
-        console.log('user is logged in');
       } else {
         this.isLoggedIn = false;
-        console.log('user not logged in');
       }
       this.isLoading = false;
-      console.log(`Loading - ${this.isLoading}`)
     })
     // this.isLoggedIn = false;
     this.isModalShowing = false;
@@ -52,7 +44,6 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleModal() {
-    console.log('show modal please')
     this.isModalShowing = !this.isModalShowing;
   }
 
