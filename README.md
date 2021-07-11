@@ -1,4 +1,19 @@
-# NhabitFrontend
+# nHabit
+
+<p align="center">
+  <img src="./src/assets/icons/nhabit-icon4.png" />
+</p>
+
+nHabit is a progressive web app for encouraging a healthier relationship with our devices! The app gamifies the everyday interactions we have with our devices, whether clicking, typing, or swiping, and creates an environment for these actions to be done more mindfully.
+
+## Screenshots
+
+<p align="center">
+  <img src="./src/assets/images/mobilescreenshot.png" />
+  <img src="./src/assets/images/desktopscreenshot.png" />
+</p>
+
+## Getting started
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
@@ -22,6 +37,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+**Recommended!**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [nHabit backend](https://github.com/kipvla/nhabit-backend)
+
+## Tech Stack
+
+- [Angular](https://angular.io/)
