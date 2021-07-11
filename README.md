@@ -4,7 +4,7 @@
   <img src="./src/assets/icons/nhabit-icon4.png" />
 </p>
 
-nHabit is a progressive web app for encouraging a healthier relationship with our devices! The app gamifies the everyday interactions we have with our devices, whether clicking, typing, or swiping, and creates an environment for these actions to be done more mindfully.
+nHabit is a progressive web app for encouraging a healthier relationship with our devices! The app, inspired by both Calm and Typeform, gamifies the everyday interactions we have with our devices, whether clicking, typing, or swiping, and creates an environment for these actions to be done more mindfully.
 
 ## Screenshots
 
