@@ -45,7 +45,7 @@ function slideX(direction: string) {
     ]),
     group([
       query(':leave', [
-        animate('1s ease', style({[direction]: '0%'}))
+        animate('1s ease', style({[direction]: '100%'}))
       ], optional),
       query(':enter', [
         animate('1s ease', style({ [direction]: '0%'}))
@@ -69,10 +69,10 @@ function slideY(direction: string) {
     ]),
     group([
       query(':leave', [
-        animate('1s ease', style({[direction]: '0%'}))
+        animate('1s ease', style({[direction]: '100%'}))
       ], optional),
       query(':enter', [
-        animate('1s ease-out', style({ [direction]: '0%'}))
+        animate('1s ease-out', style({ [direction]: '25%'}))
       ])
     ])
   ];
