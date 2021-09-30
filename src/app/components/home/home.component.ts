@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 import { FirebaseService } from '../../services/firebase/firebase.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',

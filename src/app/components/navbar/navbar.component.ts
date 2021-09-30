@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   isLoading = true;
@@ -14,33 +15,33 @@ export class NavbarComponent implements OnInit {
   isModalShowing = false;
 
   constructor(
-    private firebaseService: FirebaseService, 
+    private firebaseService: FirebaseService,
     private router: Router
-    ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.firebaseService.firebaseAuth.authState.subscribe(res => {
+    this.firebaseService.firebaseAuth.authState.subscribe((res) => {
       if (res && res.uid) {
         this.isLoggedIn = true;
       } else {
       }
       this.isLoading = false;
-    })
+    });
   }
 
   logout() {
     this.firebaseService.logout();
-    this.firebaseService.firebaseAuth.authState.subscribe(res => {
+    this.firebaseService.firebaseAuth.authState.subscribe((res) => {
       if (res && res.uid) {
         this.isLoggedIn = true;
       } else {
         this.isLoggedIn = false;
       }
       this.isLoading = false;
-    })
+    });
     // this.isLoggedIn = false;
     this.isModalShowing = false;
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/dashboard']);
   }
 
   toggleModal() {
@@ -52,5 +53,4 @@ export class NavbarComponent implements OnInit {
     if (size <= 768) this.isMobile = true;
     else this.isMobile = null;
   }
-
 }
