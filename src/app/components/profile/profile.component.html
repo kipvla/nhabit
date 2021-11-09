@@ -6,4 +6,10 @@
   />
   <p *ngIf="userData.displayName">@{{ userData.displayName }}</p>
   <p>Email: {{ userData.email }}</p>
+  <button (click)="fetchGames()">Show games</button>
+  <div *ngFor="let game of games" >
+    {{game.title}}
+    Number of slides: {{game.slides.length}}
+    <button (click)="showSingleGame(game)">Preview this game</button>
+  </div>
 </div>

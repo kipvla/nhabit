@@ -1,0 +1,60 @@
+<div *ngIf="isLoading; else content" class="container">
+    <img src="/assets/icons/android-chrome-192x192.png" class="spinner" alt="" />
+  </div>
+<ng-template #content>
+    <form class="container container-small" [formGroup]="myForm">
+      <h1>Create a new game:</h1>
+      <mat-form-field>
+        <mat-label>Game title</mat-label>
+        <input
+          matInput
+          placeholder="Ex. My click game"
+          value="My click game"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <div formArrayName="slides">
+        <div
+          *ngFor="let slide of slideForms.controls; let i = index"
+          [formGroupName]="i"
+          class="slide"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Button text</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Click me"
+              value="Click me"
+              formControlName="buttonText"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Slide commentary</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. There is no right or wrong way to click"
+              formControlName="commentary"
+            ></textarea>
+          </mat-form-field>
+          <div class="slider">
+              <mat-label>Button delay</mat-label>
+              <mat-slider
+                thumbLabel
+                formControlName="delay"
+                min="0"
+                max="500"
+                step="100"
+              ></mat-slider>
+          </div>
+          <button mat-fab (click)="deleteSlide(i)" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    
+      <button mat-button (click)="addSlide()">Add slide</button>
+      <button mat-button (click)="addGame()" [disabled]="myForm.invalid">
+        Submit game
+      </button>
+    </form>
+</ng-template>

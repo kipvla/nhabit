@@ -1,7 +1,9 @@
-import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
+import { transition, trigger, useAnimation } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
+
 import { BehaviorSubject } from 'rxjs';
+
 import { fadeIn, fadeOut, slider } from './animations/animation';
 import { User } from './models/user';
 
@@ -11,14 +13,17 @@ import { User } from './models/user';
   styleUrls: ['./app.component.scss'],
   animations: [
     slider,
-    trigger("carouselAnimation", [
-      transition("void => *", [useAnimation(fadeIn, {params: {time: '800ms'}})]),
-      transition("* => void", [useAnimation(fadeOut, {params: {time: '400ms'}})]),
-    ])
-  ]
+    trigger('carouselAnimation', [
+      transition('void => *', [
+        useAnimation(fadeIn, { params: { time: '800ms' } }),
+      ]),
+      transition('* => void', [
+        useAnimation(fadeOut, { params: { time: '400ms' } }),
+      ]),
+    ]),
+  ],
 })
 export class AppComponent {
-  isSignedIn = false;
   user: User = {
     uid: '',
     email: '',
@@ -30,14 +35,15 @@ export class AppComponent {
   isMobile = window.innerWidth < 768 ? true : false;
   isMobile$ = new BehaviorSubject<boolean>(this.isMobile);
 
-  constructor() { }
+  constructor() {}
 
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+    return (
+      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
+    );
   }
 
   handleLogout() {
-    this.isSignedIn = false;
     this.user = {
       uid: '',
       email: '',
@@ -52,5 +58,4 @@ export class AppComponent {
     if (size <= 768) this.isMobile = true;
     else this.isMobile = false;
   }
-
 }

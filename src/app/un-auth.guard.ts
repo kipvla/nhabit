@@ -15,6 +15,7 @@ export class UnAuthGuard implements CanActivate {
     if (
       !this.firebaseService.firebaseAuth.authState.subscribe((res) => {
         if (res && res.uid) {
+          this.router.navigate(['/'])
           return true;
         } else {
           return false;

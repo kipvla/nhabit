@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { environment } from 'src/environments/environment';
+import { Game } from 'src/app/models/game';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,21 @@ export class ApiClientService {
       { displayName },
       this.httpOptions
     );
+  }
+
+  getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(`${this.backendUrl}games`);
+  }
+
+  getGameById(id: string): Observable<Game> {
+    return this.http.get<Game>(`${this.backendUrl}games/${id}`);
+  }
+
+  getSampleGame(): Observable<Game> {
+    return this.http.get<Game>(`${this.backendUrl}games/6158353f6384980004a63540`);
+  }
+
+  createGame(game: Game): Observable<Game> {
+    return this.http.post<Game>(`${this.backendUrl}games`, JSON.stringify(game), this.httpOptions)
   }
 }

@@ -1,12 +1,12 @@
-<div class="container">
+<div *ngIf="areSlidesLoaded; else loading" class="container">
   <ng-container *ngFor="let slide of slides; let i = index">
     <app-click-game-page
       (click)="onNextClick()"
       *ngIf="i === slideNo"
-      text="{{ slide.text }}"
-      delay="{{ slide.delay }}"
-      hidingBtn="{{ slide.hidingBtn }}"
-      btnText="{{ slide.btnText ? slide.btnText : null }}"
+      text="{{ slide['commentary'] }}"
+      delay="{{ slide['delay'] }}"
+      hidingBtn="{{ slide['hidingBtn'] }}"
+      btnText="{{ slide['buttonTxt'] ? slide['buttonTxt'] : null }}"
       last="{{ i === slides.length - 1 ? 'true' : null }}"
       @carouselAnimation
     ></app-click-game-page>
@@ -21,3 +21,7 @@
     <button class="button">Add observation</button>
   </div> -->
 </div>
+<ng-template #loading>
+  <h2>Big stuff</h2>
+  <img src="/assets/icons/android-chrome-192x192.png" class="spinner" alt="" />
+</ng-template>

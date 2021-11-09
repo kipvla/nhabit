@@ -41,7 +41,7 @@ $nhabit-frontend-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 body {
-  font-family: "Baloo Tammudu 2", cursive;
+  font-family: "Baloo Tammudu 2", sans-serif;
   // background-color: rgb(69, 138, 149);
   background: linear-gradient(
       217deg,
@@ -50,6 +50,7 @@ body {
     ),
     linear-gradient(127deg, rgb(69, 138, 149), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -74,7 +75,7 @@ p {
 
 .input {
   font-size: 1.1rem;
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 6px 6px 0 0;
   border-bottom: 1px solid black;
   border-left: none;
@@ -84,6 +85,9 @@ p {
   padding: 0.2rem 0.4rem;
   &:focus {
     outline: none;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
   }
   ::placeholder {
     text-transform: lowercase;
@@ -155,4 +159,11 @@ hr {
     color: white;
     font-size: 2.5rem;
   }
+}
+
+html, body { 
+  height: 100%;
+}
+body { 
+  margin: 0;
 }

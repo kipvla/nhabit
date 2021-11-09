@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { CreateGameComponent } from './components/create-game/create-game.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ClickGameComponent } from './components/games/click-game/click-game.component';
@@ -17,10 +18,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'landing', component: LandingComponent, canActivate: [UnAuthGuard], data: {animation: 'isTop'} },
-  { path: 'login', component: LoginComponent, data: {animation: 'isRight'} },
-  { path: 'register', component: RegisterComponent, data: {animation: 'isTop'} },
+  { path: 'login', component: LoginComponent, canActivate: [UnAuthGuard], data: {animation: 'isRight'} },
+  { path: 'register', component: RegisterComponent, canActivate: [UnAuthGuard], data: {animation: 'isTop'} },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {animation: 'isLeft'} },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateGameComponent, canActivate: [AuthGuard] },
   { path: 'game/type', component: TypeGameComponent, canActivate: [AuthGuard] },
   { path: 'game/click', component: ClickGameComponent, canActivate: [AuthGuard], data: {animation: 'isTop'} },
   { path: 'game/swipe', component: SwipeGameComponent, canActivate: [AuthGuard] },
