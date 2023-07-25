@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -62,6 +64,8 @@ import { UnAuthGuard } from './un-auth.guard';
     CommonModule,
     AppRoutingModule,
     RouterModule,
+    MatSliderModule,
+    MatButtonModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
