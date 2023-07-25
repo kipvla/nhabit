@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { FirebaseService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ['./create-game.component.scss'],
 })
 export class CreateGameComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   slide = this.fb.group({
     buttonText: ['Click me', Validators.required],
     commentary: [
@@ -24,7 +24,7 @@ export class CreateGameComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private firebaseService: FirebaseService,
     private apiClientService: ApiClientService,
     private router: Router,
@@ -39,7 +39,7 @@ export class CreateGameComponent implements OnInit {
   }
 
   get slideForms() {
-    return this.myForm.get('slides') as FormArray;
+    return this.myForm.get('slides') as UntypedFormArray;
   }
 
   get title() {
