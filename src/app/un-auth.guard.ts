@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, CanActivate, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from './services/firebase/firebase.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UnAuthGuard implements CanActivate {
+export class UnAuthGuard  {
   constructor(
     private firebaseService: FirebaseService,
     private router: Router,

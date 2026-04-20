@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -57,15 +56,13 @@ import { UnAuthGuard } from './un-auth.guard';
     CreateGameComponent,
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    MatSliderModule,
-    MatButtonModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -77,7 +74,12 @@ import { UnAuthGuard } from './un-auth.guard';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [FirebaseService, AuthGuard, UnAuthGuard],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    FirebaseService,
+    AuthGuard,
+    UnAuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

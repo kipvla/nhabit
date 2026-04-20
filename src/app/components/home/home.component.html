@@ -1,9 +1,9 @@
-<div *ngIf="isLoading; else content" class="container">
+<div NgIf="isLoading; else content" class="container">
   <img src="/assets/icons/android-chrome-192x192.png" class="spinner" alt="" />
 </div>
 <ng-template #content (window:resize)="onResize($event)">
   <div class="container">
-    <div class="container" *ngIf="!userData.displayName">
+    <div class="container" NgIf="!userData.displayName">
       <div>Welcome to nHabit!</div>
       <div>
         Congratulations on taking a step forward in your internet health.
@@ -15,15 +15,15 @@
       </button>
       <div>{{ userName }}</div>
     </div>
-    <div *ngIf="userData && userData.displayName" class="container">
+    <div NgIf="userData && userData.displayName" class="container">
       <span>Welcome back, {{ userData.displayName }}!</span>
-      <div class="container" [class.row]="!isMobile">
+      <!-- <div class="container" [class.row]="!isMobile">
         <app-game-preview
           *ngFor="let game of currentGames"
           title="{{ game.title }}"
         ></app-game-preview>
-      </div>
-      <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+      </div> -->
+      <!-- <MatSliderModule min="1" max="100" step="1" value="50"></MatSliderModule> -->
     </div>
   </div>
 </ng-template>

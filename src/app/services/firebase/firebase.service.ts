@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 import { BehaviorSubject } from 'rxjs';
@@ -35,7 +35,7 @@ export class FirebaseService {
   constructor(
     public firebaseAuth: AngularFireAuth,
     private apiClientService: ApiClientService,
-    private router: Router
+    private router: Router,
   ) {}
 
   async login(email: string, password: string) {
@@ -114,7 +114,7 @@ export class FirebaseService {
           };
           this.user$.next(this.user);
         },
-        (error) => {}
+        (error) => {},
       );
     });
   }
